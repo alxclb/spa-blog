@@ -1,5 +1,5 @@
 import React from "react";
-import { Post } from "../post/Post";
+import { Post } from "../Post/Post";
 import "./blog-posts.scss";
 import { NoPosts } from "./components/NoPosts";
 

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Layout } from "../components/layout/Layout";
-import { Message } from "../components/container/Message";
-import { Sidebar } from "../components/sidebar/Sidebar";
-import { BlogPosts } from "../components/blog-posts/BlogPosts";
-import { Button } from "../components/common/Button";
-import { Modal } from "../components/modal/Modal";
+import { Layout } from "../components/Layout/Layout";
+import { Message } from "../components/Message/Message";
+import { Sidebar } from "../components/Sidebar/Sidebar";
+import { BlogPosts } from "../components/BlogPosts/BlogPosts";
+import { Button } from "../components/Common/Button";
+import { Modal } from "../components/Modal/Modal";
 import { BlogContext } from "../context/BlogContext";
 import { getAllPosts } from "../service/service";
 import { getCategories } from "../helper/helper";
@@ -14,7 +14,6 @@ export const Blog = () => {
     const [error, setError] = useState(null);
     const [categories, setCategories] = useState([null]);
 
-    //FATCH ALL POST FOR INITIAL HOME PAGE
     useEffect(() => {
         const fetchData = async () => {
             const res = await getAllPosts().then((res) => res.data);
@@ -25,7 +24,6 @@ export const Blog = () => {
         fetchData();
     }, []);
 
-    //MODAL VISIBILITY
     const [visible, setVisible] = useState(false);
     function toggle() {
         setVisible(!visible);

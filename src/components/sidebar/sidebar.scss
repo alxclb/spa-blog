@@ -1,27 +1,27 @@
-.sidebar{
+.sidebar {
     flex-basis: 20%;
     border: 1px solid rgb(196, 196, 196);
     border-radius: 2px;
-    h2{
+    h2 {
         text-align: center;
     }
-    ul{
+    ul {
         list-style-type: none;
         padding-left: 30px;
         padding-left: 0;
-        li{
+        li {
             display: block;
             margin: 10px auto;
             font-weight: bold;
             text-align: center;
-           
-            @media screen and (max-width: 900px){
+
+            @media screen and (max-width: 900px) {
                 display: inline-block;
                 margin-left: 20px;
             }
         }
     }
-    @media screen and (max-width: 900px){
+    @media screen and (max-width: 900px) {
         flex-basis: 100%;
         margin: 20px 0 40px;
     }

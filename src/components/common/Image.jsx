@@ -1,5 +1,4 @@
 import React from "react";
-import "./image.scss";
 import img80 from "../../images/80.png";
 import img100 from "../../images/100.png";
 

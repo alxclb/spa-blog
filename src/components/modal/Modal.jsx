@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { BlogContext } from "../../context/BlogContext";
-import { getRnd } from "../../helper/helper";
+import { getRandomNumber, textValidation } from "../../helper/helper";
 import { addPost, getAllPosts, updatePost } from "../../service/service";
-import { Button } from "../common/Button";
+import { Button } from "../Common/Button";
 import { Controls } from "./components/Controls";
 import { EditText } from "./components/EditText";
 import "./modal.scss";
@@ -18,8 +18,8 @@ export const Modal = ({ visible, toggle, id, text, title, categoryId }) => {
         title: title,
         categoryId: categoryId,
     });
-    const [resStatus, setResStatus] = useState("");//response status
-    const [screenSize, setScreenSize] = useState({ //modal screen size
+    const [responseStatus, setResponseStatus] = useState("");
+    const [screenSize, setScreenSize] = useState({
         width: "600px",
         height: "auto",
     });
@@ -27,15 +27,18 @@ export const Modal = ({ visible, toggle, id, text, title, categoryId }) => {
     function minWindow() {
         setScreenSize({ width: "600px", height: "auto" });
     }
+
     function maxWindow() {
         setScreenSize({ width: "100vw", height: "100vh" });
     }
+
     function editTitle(e) {
-        setPostContent((prevState) => ({
-            ...prevState,
-            title: e.target.value,
-        }));
+            setPostContent((prevState) => ({
+                ...prevState,
+                title: e.target.value,
+            }));
     }
+
     function editText(e) {
         setPostContent((prevState) => ({
             ...prevState,
@@ -43,30 +46,44 @@ export const Modal = ({ visible, toggle, id, text, title, categoryId }) => {
         }));
     }
 
-    //ADD POST OR EDIT POST 
     async function postData() {
-        if (id) {
+       if(textValidation(postContent.title) && textValidation(postContent.text)){
+          if (id) {
             let data = JSON.stringify(postContent);
-            await updatePost(id, data).then((data) => setResStatus("UPDATED"));
+            await updatePost(id, data).then((data) =>
+                setResponseStatus("UPDATED")
+            );
         } else {
-            let data = JSON.stringify({ ...postContent, categoryId: getRnd() }); //add random category(1-5)
-            await addPost(data).then((data) => setResStatus(data.statusText));
-        }
-        let t = setTimeout(() =>toggle() , 3000);
-        // refresh post list
+            let data = JSON.stringify({
+                ...postContent,
+                categoryId: getRandomNumber(),
+            });
+            await addPost(data).then((data) =>
+                setResponseStatus(data.statusText)
+            );
+        } 
+       }else{
+        setResponseStatus('Only letters and numbers');
+       }
+        
+        let t = setTimeout(() => toggle(), 3000);
+
         const res = await getAllPosts().then((res) => res.data);
+
         setPosts(res.resultData);
-         return () => {
-            clearTimeout(t);
-        };
-    }
-    //CLEAR RESPONSE MESSAGE
-    useEffect(() => {
-        let t = setTimeout(() => setResStatus(""), 3000);
+
         return () => {
             clearTimeout(t);
         };
-    }, [resStatus]);
+    }
+
+    useEffect(() => {
+        let t = setTimeout(() => setResponseStatus(""), 3000);
+
+        return () => {
+            clearTimeout(t);
+        };
+    }, [responseStatus]);
 
     return visible
         ? ReactDOM.createPortal(
@@ -97,7 +114,7 @@ export const Modal = ({ visible, toggle, id, text, title, categoryId }) => {
                           <Button onClick={toggle} title="Close" />
                       </div>
                       <div className="modal-res">
-                          <Response statusText={resStatus} />
+                          <Response statusText={responseStatus} />
                       </div>
                   </div>
                   <div className="modal-overlay"></div>

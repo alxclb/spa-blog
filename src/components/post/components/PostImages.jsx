@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image } from '../../common/Image'
+import { Image } from '../../Common/Image'
 
 export const PostImages = () => {
     return (

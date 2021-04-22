@@ -1,9 +1,5 @@
-import React from 'react'
+import React from "react";
 
-export const Flex = ({children}) => {
-    return (
-        <div className="flex-container">
-            {children}
-        </div>
-    )
-}
+export const Flex = ({ children }) => {
+    return <div className="flex-container">{children}</div>;
+};

@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
-import { Button } from "../../common/Button";
+import { Button } from "../../Common/Button";
 import { Created } from "./Created";
-import { Image } from "../../common/Image";
-import { Modal } from "../../modal/Modal";
+import { Image } from "../../Common/Image";
+import { Modal } from "../../Modal/Modal";
 import { deletePost } from "../../../service/service";
 import { BlogContext } from "../../../context/BlogContext";
 
@@ -11,7 +11,6 @@ export const PostHeader = ({post}) => {
     const {createdAt, id, text, title, categoryId} = post;
 
     let { posts, setPosts } = useContext(BlogContext);
-
 
     const [visible, setVisible] = useState(false);
     function toggle() {
