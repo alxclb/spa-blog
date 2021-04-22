@@ -1,0 +1,15 @@
+.blog-posts {
+    flex-basis: 78%;
+    ul {
+        margin: 0;
+        padding-left: 0;
+        list-style-type: none;
+
+        li {
+            &:last-child {
+                margin-bottom: 0;
+            }
+            &:nth-child(odd){background-color: #f2f2f2;}
+        }
+    }
+}

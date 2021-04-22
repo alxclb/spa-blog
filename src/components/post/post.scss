@@ -1,0 +1,49 @@
+.post {
+    border: 1px solid rgb(196, 196, 196);
+    border-radius: 2px;
+    margin-bottom: 25px;
+    .post-header {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 30px 0;
+        @media screen and (max-width: 648px){
+            flex-wrap: wrap;
+        }
+
+        .box.left{
+            flex-basis: 8%;
+        }
+      
+        .box.center {
+            margin-right: auto;
+            margin-left: 10px;
+            h2{
+                margin: 0 0 15px;
+            }
+            @media screen and (max-width: 648px){
+                order: 2;
+            }
+        }
+        .box.right {
+            flex-basis: 30%;
+            display: flex;
+            justify-content: center;
+        
+        }
+    }
+    .post-content{
+        padding: 0 30px;
+    }
+    .post-images{
+        display: flex;
+        justify-content: center;
+
+        .image-wrapper{
+            margin: 10px 5px;
+            img{
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}

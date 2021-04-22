@@ -1,0 +1,20 @@
+.messages{
+    padding: 20px;
+    background-color: whitesmoke;
+    border: 1px solid rgb(196, 196, 196);
+    border-radius: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button{
+       align-self: flex-start;
+       cursor: pointer;
+       &:focus{
+           outline:none;
+       }
+    }
+}
+.messages.hide{
+    display: none;
+}

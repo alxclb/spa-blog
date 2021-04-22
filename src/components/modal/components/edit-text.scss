@@ -1,0 +1,22 @@
+.edit-text {
+    .text-wrapper,
+    .title-wrapper {
+        margin: 30px;
+        display: flex;
+        justify-content: center;
+        label {
+            margin: 0 5px;
+        }
+        textarea,
+        input {
+            width: 80%;
+            padding-left: 5px;
+            border: 1px solid rgb(196, 196, 196);
+            font-family: sans-serif;
+            font-size: 16px;
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+}
