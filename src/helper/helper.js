@@ -9,6 +9,6 @@ export function getRandomNumber() {
 }
 
 export function textValidation(text){
-    const regex = /^[a-zA-Z0-9.-]+$/g
+    const regex = /^[a-zA-Z0-9.-\s]+$/g
     return regex.test(text);
 }

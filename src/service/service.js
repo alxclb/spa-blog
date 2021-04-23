@@ -8,13 +8,7 @@ async function getAllPosts() {
         const res = await API.get(BLOG_POSTS, header);
         return res;
     } catch (error) {
-        if (error.response) {
-            return error.response;
-        } else if (error.request) {
-            return error.request;
-        } else {
-            return error;
-        }
+        return error;
     }
 }
 
@@ -36,13 +30,7 @@ async function getPost(id) {
         const response = await API.get(BLOG_POSTS + "/" + id, header);
         return response;
     } catch (error) {
-        if (error.response) {
-            return error.response;
-        } else if (error.request) {
-            return error.request;
-        } else {
-            return error;
-        }
+        return error;
     }
 }
 
@@ -56,27 +44,15 @@ async function updatePost(id, postUpdate) {
         });
         return response;
     } catch (error) {
-        if (error.response) {
-            return error.response;
-        } else if (error.request) {
-            return error.request;
-        } else {
-            return error;
-        }
+        return error;
     }
 }
-async function deletePost(id, postUpdate) {
+async function deletePost(id) {
     try {
         const response = await API.delete(BLOG_POSTS + "/" + id, header);
         return response;
     } catch (error) {
-        if (error.response) {
-            return error.response;
-        } else if (error.request) {
-            return error.request;
-        } else {
-            return error;
-        }
+        return error;
     }
 }
 
@@ -85,13 +61,7 @@ async function getByCategory(categoryId) {
         const response = await API.get(POST_BY_CATEGORY + categoryId, header);
         return response;
     } catch (error) {
-        if (error.response) {
-            return error.response;
-        } else if (error.request) {
-            return error.request;
-        } else {
-            return error;
-        }
+        return error;
     }
 }
 
@@ -100,13 +70,7 @@ async function searchPost(text) {
         const response = await API.get(SEARCH + text, header);
         return response;
     } catch (error) {
-        if (error.response) {
-            return error.response;
-        } else if (error.request) {
-            return error.request;
-        } else {
-            return error;
-        }
+        return error;
     }
 }
 
